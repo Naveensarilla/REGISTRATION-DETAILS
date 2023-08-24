@@ -1,0 +1,13 @@
+/* span{
+    color: rgb(255, 0, 0);
+    background: rgb(180, 147, 14);
+    display: none;
+
+} */
+/* input:invalid[focused='true'] ~ #sapnn{
+    display: block;
+} */
+
+onput:invalid ~ span{
+    display: block ;
+}

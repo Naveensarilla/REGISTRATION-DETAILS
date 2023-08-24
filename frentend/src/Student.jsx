@@ -44,21 +44,56 @@ export const Student = () => {
     //     setValues({...value,[e.target.name]:e.target.value})
     // }
 
+
+
+    // const [data, setData] = useState([]);
+    // useEffect(() => {
+    //     axios.get('http://localhost:7777/')
+    //     .then(res =>{
+    //         setData(res.data[0])
+    //     })
+    //     .catch(err => console.log(err));
+    //     // .then(res => console.log(res))
+    //     // .catch(err => console.log(err));
+    // },[])
+
+
+
     const handleSubmit = e => {
         e.preventDefault();
         const formdata = new FormData();
         formdata.append('image',File)
         // axios.post('http://localhost:709/list',value).then(() => alert('data submited'))
-        axios.post("http://localhost:709/", value)
+        axios.post("http://localhost:709/upload", value)
         .then(res => {
             console.log(res);
             alert('YOU ARE SUBMITED THE DATA SUCCESSFULLY successfully');
         })
         .catch(err => console.log(err))
      }
+   
+
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    //     // const formdata = new FormData();
+    //     // formdata.append('value',value)
+    //     // axios.post('http://localhost:709/list',value).then(() => alert('data submited'))
+    //     axios.post("http://localhost:709/", value)
+    //     .then(res => {
+    //         console.log(res);
+    //         alert('YOU ARE SUBMITED THE DATA SUCCESSFULLY successfully');
+    //         // if(res.data.Status === "Success"){
+    //         //     console.log("Succeded")
+    //         // }else{
+    //         //     console.log("Faild")
+    //         // }
+            
+    //     })
+    //     .catch(err => console.log(err))
+    //  }
   return (
     <div className='RegForm'>
-        <form method='POST' encType='multipart/form-data' onSubmit={handleSubmit}>
+        <form method='post' encType='multipart/form-data' onSubmit={handleSubmit}>
 
             {/* 1st input section */}
             <div className='Titelname'>
@@ -83,11 +118,11 @@ export const Student = () => {
             <div className='inputContent'>
             <label htmlFor="#Gender">Gender<span>*</span></label>
             <div>
-             
-                <label style={{padding:"0"}} htmlFor="Male" Gender='Male'>Male <span>*</span></label>
                 <input type="radio" value="Male"  name='s1' required onChange={e => setValues({...value, Gender: e.target.value})} /> 
-                <label  style={{padding:"0"}} htmlFor="female" Gender='Male'>Female <span>*</span></label>     
+                <label style={{padding:"0"}} htmlFor="Male" Gender='Male'>Male <span>*</span></label>
                 <input type="radio" value='female' name='s1'  required onChange={e => setValues({...value, Gender: e.target.value})}/>             
+                <label  style={{padding:"0"}} htmlFor="female" Gender='Male'>Female <span>*</span></label>     
+
             </div>
             
 
@@ -144,7 +179,7 @@ export const Student = () => {
             <div className='registrationDet'>
          <div className='regFlex'>
          <div className='inputContent'>
-          <label htmlFor="">FATHER'S NAME<span>*</span></label>
+          <label htmlFor=""> FATHER'S NAME<span>*</span></label>
           <input type="text" required  className='inputss' onChange={e => setValues({...value, FathersName: e.target.value})}/>
           </div>
 
@@ -411,6 +446,7 @@ export const Student = () => {
 
            <button className='btnButton' type='submit' onClick={value}>Submit</button>
         </form>
+
     </div>
   )
 }
